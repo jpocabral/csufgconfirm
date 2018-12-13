@@ -6,6 +6,8 @@ O projeto se trata de um script automático em python que faz uso da biblioteca 
 - sudo apt-get install python python-pip
 - pip install selenium
 - pip install
-- [Chromedrive][http://chromedriver.chromium.org/downloads]
+- [Chromedrive](http://chromedriver.chromium.org)
+- [Google Chrome](https://www.google.com/chrome/) ou [Chromium](https://www.chromium.org/getting-involved/download-chromium)
+
 # Uso:
 - python csufgconfirm.py
