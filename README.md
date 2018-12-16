@@ -7,6 +7,7 @@ O projeto se trata de um script automático em python que faz uso da biblioteca 
 - pip install selenium
 - [Chromedrive](http://chromedriver.chromium.org)
 - [Google Chrome](https://www.google.com/chrome/) ou [Chromium](https://www.chromium.org/getting-involved/download-chromium)
+- [Gerar senha de App - Email](https://security.google.com/settings/security/apppasswords) (Para maior segurança do usuário ao enviar os email's de notificação)
 
 # Uso:
 - python csufgconfirm.py
