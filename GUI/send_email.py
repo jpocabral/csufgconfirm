@@ -5,13 +5,13 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
 from email import encoders
 
-def  enviar_email(usuario, senha, destinatario):
+def  enviar_email(email, senha):
 
     subject = 'UFG - Concurso Confirmado'
 
     msg = MIMEMultipart()
-    msg['From'] = usuario
-    msg['To'] = destinatario
+    msg['From'] = email
+    msg['To'] = email
     msg['Subject'] = subject
 
     body = 'Hi there, sending this email from Python!'
@@ -28,8 +28,8 @@ def  enviar_email(usuario, senha, destinatario):
     text = msg.as_string()
     server = smtplib.SMTP('smtp.gmail.com',587)
     server.starttls()
-    server.login(usuario ,senha)
+    server.login(email ,senha)
 
 
-    server.sendmail(usuario,destinatario,text)
+    server.sendmail(email,email,text)
     server.quit()

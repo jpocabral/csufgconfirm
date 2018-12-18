@@ -6,22 +6,41 @@ import sys
 import argparse
 
 parser = argparse.ArgumentParser(description="CSUFGCONFIRM")
+
 group = parser.add_mutually_exclusive_group()
-group.add_argument("-c", "--cli", action="store_true")
+
+group.add_argument("-c",
+                   "--cli",
+                   action="store_true")
+
+parser.add_argument('--email',
+                    action = 'store',
+                    dest = 'email',
+                    required = True,
+                    type=str,
+                    help = 'E-mail para envio das notificações')
+
+parser.add_argument('--senha',
+                    action = 'store',
+                    dest = 'senha',
+                    required = True,
+                    type=str,
+                    help = 'Senha do email informado')
+
 args = parser.parse_args()
+
+email = args.email
+senha = args.senha
+
 if args.cli:
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--window-size=1420,1080')
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('--disable-gpu')
-    chrome_options.binary_location = '/usr/bin/chromium-browser'
 
-    service_log_path = "{}/chromedriver.log".format('/home/pi')
+    browser = webdriver.Chrome(chrome_options=chrome_options)
 
-    browser = webdriver.Chrome('/usr/lib/chromium-browser/chromedriver',
-                               chrome_options=chrome_options,
-                               service_log_path=service_log_path)
     browser.get('https://centrodeselecao.ufg.br/fiscalizacao/sistema/confirmacao/1_confirmacao_chamada.php')
 else:
     browser = webdriver.Chrome()
@@ -39,4 +58,4 @@ try:
     confirmar_interesse.click()
 except NoSuchElementException:
         print 'Não há concurso público disponível'
-        enviar_email('jpocabral@gmail.com', 'senha', 'jpocabral@gmail.com')
+        enviar_email(email, senha)
