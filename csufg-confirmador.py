@@ -58,7 +58,7 @@ login = args.cpf
 
 if args.cli:
     while True:
-        chrome_options = webdriver.ChromeOptions(chromedrivepath)
+        chrome_options = webdriver.ChromeOptions(chromedriverpath)
         chrome_options.add_argument('--no-sandbox')
         chrome_options.add_argument('--window-size=1420,1080')
         chrome_options.add_argument('--headless')
@@ -80,14 +80,14 @@ if args.cli:
 
             # TRATAMENTO DE CONCURSOS DISPONÍVEIS
             print 'Há concursos públicos disponíveis'
-            enviar_email(email, senha, texto="Glória a deux", assunto="UFG - Novo concurso disponível!")
+            enviar_email(email, senha, texto="Segue em anexo os detalhes do concurso.", assunto="UFG - Novo concurso disponível!")
         except NoSuchElementException:
             print 'Não há concurso público disponível'
             #enviar_email(email, senha, assunto="UFG - Nenhum concurso no momento", texto="")
 
         # TRATAMENTO DE CONCURSOS DISPONÍVEIS
         print 'Há concursos públicos disponíveis'
-        #enviar_email(email, senha, texto="Glória a deux", assunto="UFG - Novo concurso disponível!")
+        enviar_email(email, senha, texto="Segue em anexo os detalhes do concurso.", assunto="UFG - Novo concurso disponível!")
 
         time.sleep(30)
 else:
