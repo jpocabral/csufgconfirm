@@ -32,14 +32,6 @@ parser.add_argument('--cdpath',
                     type=str,
                     help = 'Local do binário do Chromedriver')
 
-parser.add_argument('--browserpath',
-                    action = 'store',
-                    dest = 'browserpath',
-                    required = False,
-                    type=str,
-                    help = 'Local do binário do Browser - (Recomendado para sistemas Linux '
-                           'onde o Browser não é encontrado automaticamente)')
-
 parser.add_argument('--cpf',
                     action = 'store',
                     dest = 'cpf',
@@ -83,7 +75,6 @@ if args.cli:
             enviar_email(email, senha, texto="Mais informações em "+url, assunto="UFG - Novo concurso disponível!")
         except NoSuchElementException:
             print 'Não há concurso público disponível'
-            #enviar_email(email, senha, assunto="UFG - Nenhum concurso no momento", texto="")
 
         time.sleep(30)
 else:
@@ -107,6 +98,5 @@ else:
             enviar_email(email, senha, texto="Mais informações em " + url, assunto="UFG - Novo concurso disponível!")
         except NoSuchElementException:
                 print 'Não há concurso público disponível'
-                #enviar_email(email, senha, texto="Não existem concursos no momento.", assunto="UFG - Nenhum concurso no momento")
 
         time.sleep(30)
