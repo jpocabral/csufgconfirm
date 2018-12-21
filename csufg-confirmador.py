@@ -44,7 +44,6 @@ args = parser.parse_args()
 email = args.email
 senha = args.senha
 chromedriverpath = args.chromedriverpath
-browserpath = args.browserpath
 login = args.cpf
 
 
