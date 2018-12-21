@@ -9,5 +9,5 @@ O projeto se trata de um script automático em python que faz uso da biblioteca 
 - [Google Chrome](https://www.google.com/chrome/) ou [Chromium](https://www.chromium.org/getting-involved/download-chromium)
 - [Gerar senha de App - Email](https://security.google.com/settings/security/apppasswords) (Para maior segurança do usuário ao enviar os email's de notificação)
 
-# Uso:
-- python csufgconfirm.py
+# Exemplos de uso:
+- python csufgconfirm.py --cpf 111.111.111-11 --email seuemail@gmail.com --senha senha --cdpath C:\\PROGRA~1\Chromedriver\chromedriver.exe
