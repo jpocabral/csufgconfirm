@@ -2,11 +2,12 @@
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from send_email import *
-import sys, argparse, time
+import argparse, time
 
 parser = argparse.ArgumentParser(description="CSUFGCONFIRM")
 group = parser.add_mutually_exclusive_group()
 url = 'https://centrodeselecao.ufg.br/fiscalizacao/sistema/confirmacao/1_confirmacao_chamada.php'
+url_teste='C:\Users\João Paulo\Desktop\Centro de Seleção UFG - Fiscalização.html'
 
 group.add_argument("--cli",
                    action="store_true")
@@ -93,7 +94,7 @@ else:
             confirmar_interesse.click()
 
             # TRATAMENTO DE CONCURSOS DISPONÍVEIS
-            print 'Há concursos públicos disponíveis'
+            print 'Há um concurso público disponível'
             enviar_email(email, senha, texto="Mais informações em " + url, assunto="UFG - Novo concurso disponível!")
         except NoSuchElementException:
                 print 'Não há concurso público disponível'
