@@ -75,7 +75,7 @@ if args.cli:
             enviar_email(email, senha, texto="Mais informações em "+url, assunto="UFG - Novo concurso disponível!")
         except NoSuchElementException:
             print 'Não há concurso público disponível'
-
+        browser.quit()
         time.sleep(30)
 else:
     while True:
@@ -98,5 +98,5 @@ else:
             enviar_email(email, senha, texto="Mais informações em " + url, assunto="UFG - Novo concurso disponível!")
         except NoSuchElementException:
                 print 'Não há concurso público disponível'
-
+        browser.quit()
         time.sleep(30)
