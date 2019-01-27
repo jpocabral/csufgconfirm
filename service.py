@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 import os, platform, subprocess
-def criarServico():
+
+def criarServico(primeiroNome):
     try:
         if platform.system() == 'Windows':
             print 'O sistema é Windows'
             print os.system('echo %cd%')
         elif platform.system() == 'Linux':
-            servicename = 'monna.service'
+            servicename = primeiroNome
             arquivo = open(servicename, "w+")
             path = subprocess.check_output('pwd', shell=True).rstrip()
 

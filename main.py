@@ -2,7 +2,7 @@
 import argparse, selenium
 from csufgconfirm import iniciar
 from persistencia import *
-from service import criarServico
+from service import *
 
 parser = argparse.ArgumentParser(description="CSUFGCONFIRM")
 group = parser.add_mutually_exclusive_group()
@@ -39,7 +39,8 @@ elif primeiraVez() is True:
         iniciar(getCpf(),getEmail(),getSenha(),getCdpath(),modo)
     except selenium.common.exceptions.WebDriverException:
         print "O ChromeDriver não foi encontrado no diretório informado."
-    servicename = criarServico()
+    servicename = criarServico(primeiroNome())
+
     if servicename != None:
         print 'Serviço criado com sucesso!'
         print 'Apartir de agora um o programa funcionará sempre que o computador estiver ligado.'
