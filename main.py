@@ -2,6 +2,7 @@
 import argparse, selenium
 from csufgconfirm import iniciar
 from persistencia import *
+from service import criarServico
 
 parser = argparse.ArgumentParser(description="CSUFGCONFIRM")
 group = parser.add_mutually_exclusive_group()
@@ -32,12 +33,20 @@ elif primeiraVez() is True:
     while trava is True:
         print 'Modo Visual(GUI) ou Linha de Comando(CLI)?'
         modo = raw_input('Informe GUI ou CLI: ')
-        if modo is 'CLI' or modo is'cli' or modo is 'GUI' or modo is 'gui':
+        if modo == 'CLI' or modo == 'cli' or modo == 'GUI' or modo == 'gui':
             trava = False
     try:
         iniciar(getCpf(),getEmail(),getSenha(),getCdpath(),modo)
     except selenium.common.exceptions.WebDriverException:
         print "O ChromeDriver não foi encontrado no diretório informado."
+    servicename = criarServico()
+    if servicename != None:
+        print 'Serviço criado com sucesso!'
+        print 'Apartir de agora um o programa funcionará sempre que o computador estiver ligado.'
+        print 'Para acompanhar o funcionamento do sistema no Linux utilize o comando sudo systemctl status '+servicename+'.service'
+
+
+
 
 elif primeiraVez() is False and args.cli is False:
     try:
