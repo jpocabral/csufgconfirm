@@ -27,7 +27,9 @@ elif primeiraVez() is True:
     email = raw_input('Insira o Email: ')
     senha = raw_input('Insira a senha do Email: ')
     cdpath = raw_input('Insira o local de instalação ChromeDriver: ')
-    salvar_dados(cpf,email,senha,cdpath)
+    primeiroNome = raw_input('Insira seu primeiro nome sem acentos')
+    
+    salvar_dados(cpf,email,senha,cdpath,primeiroNome)
 
     trava = True
     while trava is True:
