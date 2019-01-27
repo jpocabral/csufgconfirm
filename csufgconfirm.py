@@ -8,7 +8,7 @@ def iniciar(cpf, email, senha, cdpath, modo):
 
     url = 'https://centrodeselecao.ufg.br/fiscalizacao/sistema/confirmacao/1_confirmacao_chamada.php'
 
-    if modo == 'GUI' or 'gui':
+    if modo is 'GUI' or modo is 'gui':
         print 'MODO GUI'
         while True:
             browser = webdriver.Chrome(cdpath)
@@ -33,7 +33,7 @@ def iniciar(cpf, email, senha, cdpath, modo):
             browser.quit()
             time.sleep(30)
 
-    elif modo == 'CLI' or 'cli':
+    elif modo is 'CLI' or modo is 'cli':
         while True:
             chrome_options = webdriver.ChromeOptions()
             chrome_options.add_argument('--no-sandbox')

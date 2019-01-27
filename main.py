@@ -10,17 +10,16 @@ group.add_argument("--cli",
                    action="store_true")
 
 args = parser.parse_args()
-print args.cli
-if args.cli == True and primeiraVez() == False:
-    print 'if args.cli and primeiraVez() == False:'
+
+if args.cli is True and primeiraVez() is False:
     modo = 'cli'
     try:
-        iniciar(getCpf(),getEmail(),getSenha(),getCdpath(),modo)
+        iniciar(getCpf(),getEmail(),getSenha(),getCdpath(),'CLI')
     except selenium.common.exceptions.WebDriverException:
         print "O ChromeDriver não foi encontrado no diretório informado."
 
 
-elif primeiraVez() == True:
+elif primeiraVez() is True:
     print 'Bem vindo ao CSUFGCONFIRM!'
     print 'Por favor informe os dados para que possamos monitorar para você.'
     cpf = raw_input('Insira o CPF: ')
@@ -30,21 +29,19 @@ elif primeiraVez() == True:
     salvar_dados(cpf,email,senha,cdpath)
 
     trava = True
-    while trava == True:
+    while trava is True:
         print 'Modo Visual(GUI) ou Linha de Comando(CLI)?'
         modo = raw_input('Informe GUI ou CLI: ')
-        if modo == 'CLI' or 'cli' or 'GUI' or 'gui':
+        if modo is 'CLI' or modo is'cli' or modo is 'GUI' or modo is 'gui':
             trava = False
     try:
         iniciar(getCpf(),getEmail(),getSenha(),getCdpath(),modo)
     except selenium.common.exceptions.WebDriverException:
         print "O ChromeDriver não foi encontrado no diretório informado."
 
-elif primeiraVez() == False and  args.cli == False:
-    print 'elif primeiraVez() == False and  args.cli == False:'
-    modo = 'GUIx'
-    # try:
-    iniciar(getCpf(),getEmail(),getSenha(),getCdpath(),modo)
-    # except selenium.common.exceptions.WebDriverException:
-    #     print "O ChromeDriver não foi encontrado no diretório informado."
+elif primeiraVez() is False and args.cli is False:
+    try:
+        iniciar(getCpf(),getEmail(),getSenha(),getCdpath(),'GUI')
+    except selenium.common.exceptions.WebDriverException:
+        print "O ChromeDriver não foi encontrado no diretório informado."
 
