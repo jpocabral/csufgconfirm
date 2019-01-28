@@ -32,6 +32,6 @@ def criarServico(primeiroNome):
             print 'A aplicação não suporta MacOS'
         else:
             print 'Sistema Operacional desconhecido.'
-        return servicename
+        return 0
     except:
-        return None
+        return 1
