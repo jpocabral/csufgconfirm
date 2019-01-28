@@ -35,7 +35,7 @@ def getCdpath():
         cdpath = dados['cdpath']
         return cdpath
 
-def primeiroNome():
+def getPrimeiroNome():
     with open('dados.pickle', 'rb') as f:
         dados = pickle.load(f)
         primeiroNome = dados['primeiroNome']
