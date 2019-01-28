@@ -27,8 +27,8 @@ elif primeiraVez() is True:
     email = raw_input('Insira o Email: ')
     senha = raw_input('Insira a senha do Email: ')
     cdpath = raw_input('Insira o local de instalação ChromeDriver: ')
-    primeiroNome = raw_input('Insira seu primeiro nome sem acentos')
-    
+    primeiroNome = raw_input('Insira o seu primeiro nome ou sigla: ')
+
     salvar_dados(cpf,email,senha,cdpath,primeiroNome)
 
     trava = True
@@ -41,12 +41,11 @@ elif primeiraVez() is True:
         iniciar(getCpf(),getEmail(),getSenha(),getCdpath(),modo)
     except selenium.common.exceptions.WebDriverException:
         print "O ChromeDriver não foi encontrado no diretório informado."
-    servicename = criarServico(primeiroNome())
-
-    if servicename != None:
-        print 'Serviço criado com sucesso!'
-        print 'Apartir de agora um o programa funcionará sempre que o computador estiver ligado.'
-        print 'Para acompanhar o funcionamento do sistema no Linux utilize o comando sudo systemctl status '+servicename+'.service'
+    nome = getPrimeiroNome()
+    criarServico(nome)
+    print 'Serviço criado com sucesso!'
+    print 'Apartir de agora um o programa funcionará sempre que o computador estiver ligado.'
+    print 'Para acompanhar o funcionamento do sistema no Linux utilize o comando sudo systemctl status '+getPrimeiroNome()+'.service'
 
 
 
@@ -56,4 +55,3 @@ elif primeiraVez() is False and args.cli is False:
         iniciar(getCpf(),getEmail(),getSenha(),getCdpath(),'GUI')
     except selenium.common.exceptions.WebDriverException:
         print "O ChromeDriver não foi encontrado no diretório informado."
-
