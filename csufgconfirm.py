@@ -9,7 +9,7 @@ def iniciar(cpf, email, senha, cdpath, modo):
     url = 'https://centrodeselecao.ufg.br/fiscalizacao/sistema/confirmacao/1_confirmacao_chamada.php'
 
     if modo is 'GUI' or modo is 'gui':
-        print 'MODO GUI'
+        print ('MODO GUI')
         while True:
             browser = webdriver.Chrome(cdpath)
             browser.get(url)
@@ -26,10 +26,10 @@ def iniciar(cpf, email, senha, cdpath, modo):
                 confirmar_interesse.click()
 
                 # TRATAMENTO DE CONCURSOS DISPONÍVEIS
-                print 'Há um concurso público disponível'
+                print ('Há um concurso público disponível')
                 enviar_email(email, senha, texto="Mais informações em " + url, assunto="UFG - Novo concurso disponível!")
             except NoSuchElementException:
-                    print 'Não há concurso público disponível'
+                    print ('Não há concurso público disponível')
             browser.quit()
             time.sleep(30)
 
@@ -56,9 +56,9 @@ def iniciar(cpf, email, senha, cdpath, modo):
                 confirmar_interesse.click()
 
                 # TRATAMENTO DE CONCURSOS DISPONÍVEIS
-                print 'Há concursos públicos disponíveis'
+                print ('Há concursos públicos disponíveis')
                 enviar_email(email, senha, texto="Mais informações em "+url, assunto="UFG - Novo concurso disponível!")
             except NoSuchElementException:
-                print 'Não há concurso público disponível'
+                print ('Não há concurso público disponível')
             browser.quit()
             time.sleep(30)

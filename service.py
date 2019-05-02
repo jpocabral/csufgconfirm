@@ -4,8 +4,8 @@ import os, platform, subprocess
 def criarServico(primeiroNome):
     try:
         if platform.system() == 'Windows':
-            print 'O sistema é Windows'
-            print os.system('echo %cd%')
+            print ('O sistema é Windows')
+            print (os.system('echo %cd%'))
         elif platform.system() == 'Linux':
             servicename = primeiroNome
             arquivo = open(servicename, "w+")
@@ -29,9 +29,9 @@ def criarServico(primeiroNome):
             os.system('sudo systemctl start '+servicename)
 
         elif platform.system() == 'Darwin':
-            print 'A aplicação não suporta MacOS'
+            print ('A aplicação não suporta MacOS')
         else:
-            print 'Sistema Operacional desconhecido.'
+            print ('Sistema Operacional desconhecido.')
         return 0
     except:
         return 1
