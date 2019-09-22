@@ -1,32 +1,26 @@
 # -*- coding: utf-8 -*-
-import smtplib
+
+from smtplib import SMTP,SMTPAuthenticationError, SMTPSenderRefused
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-from email.mime.base import MIMEBase
-from email import encoders
 
-def  enviar_email(email, senha, texto, assunto):
+def  enviar_email(email_origem, email_destino, senha, texto, assunto):
 
     msg = MIMEMultipart()
-    msg['From'] = email
-    msg['To'] = email
+    msg['From'] = email_origem
+    msg['To'] = email_destino
     msg['Subject'] = assunto
 
     msg.attach(MIMEText(texto,'plain'))
-    #filename='teste.pdf'
-    #attachment  =open(filename,'rb')
 
-    #part = MIMEBase('application','octet-stream')
-    #part.set_payload((attachment).read())
-    #encoders.encode_base64(part)
-    #part.add_header('Content-Disposition',"attachment; filename= "+filename)
-
-    #msg.attach(part)
     mensagem = msg.as_string()
-    server = smtplib.SMTP('smtp.gmail.com',587)
+    server = SMTP('smtp.gmail.com',587)
     server.starttls()
-    server.login(email ,senha)
+    try:
+        server.login(email_origem, senha)
+        server.sendmail(email_origem,email_destino,mensagem)
+        print("Email enviado!")
+    except SMTPAuthenticationError:
+        print("Senha do email incorreta!")
 
-
-    server.sendmail(email,email,mensagem)
     server.quit()
